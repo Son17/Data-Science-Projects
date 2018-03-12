@@ -53,14 +53,14 @@ variables = replace_zero(variables)
 
 
 class Dataset(object):
-    "A dataset that we load into the system"
+    '''A dataset that we load into the system'''
 
     def __init__(self, features, target):
         ""
         self.features = features
         self.target = target
  
-    "create summary statistics"
+    '''create summary statistics'''
     def summary_stats(self):
         summary_stats=[]
         for var in self.features:
@@ -68,7 +68,7 @@ class Dataset(object):
             summary_stats.append(sum_stats)
         return summary_stats
     
-    "Plot variable distributions"
+    '''Plot variable distributions'''
     def plot_distribution(self,feature_number):
         fig = plt.figure()
         sns.set_style("white")
@@ -76,11 +76,11 @@ class Dataset(object):
         plt.title('Distribution Graph for Feature: ' + str(feature_number))
         plt.tight_layout()
     
-    "perform principal component analysis"
+    '''perform principal component analysis'''
     def PCA_trans(self,nb_components):
         return(PCA(n_components=nb_components).fit_transform(self.features))
     
-    "make scatter plot"
+    '''make scatter plot'''
     def scatter_plot(self, var1, var2):
         var_redux = df.PCA_trans(2)
         redux_zipped = zip(var_redux, df.target)
@@ -92,7 +92,7 @@ class Dataset(object):
                 colors.append('seagreen')
         return (plt.scatter(var1, var2, c=colors))
     
-    "calculate correlation between features and a variable"
+    '''calculate correlation between features and a variable'''
     def corr(self, a_variable):
         results=[]
         for i in range(0,self.features.shape[1]):
@@ -101,7 +101,7 @@ class Dataset(object):
             results.append(correlation)
         return (results)
     
-    "extract kurtosis from summary statistics"
+    '''extract kurtosis from summary statistics'''
     def kurtosis(self):
         kurtosis = []
         summary_stats = self.summary_stats()
@@ -110,18 +110,18 @@ class Dataset(object):
             kurtosis.append(kurt)
         return (kurtosis)
 
-    "make regression plot"
+    '''make regression plot'''
     def reg_plot(self, feature_number, a_feature, TrueorFalse):
         var_p= self.features[:,feature_number]
         sns.regplot(var_p.astype('float'), a_feature, logistic=TrueorFalse)
     
-    "create dictionary from a list with the length of the features"
+    '''create dictionary from a list with the length of the features'''
     def zipped(self, a_list):
         idx = range(len(self.features))
         zipped = dict(zip(idx, a_list))
         return (zipped)
     
-    "find a value large than a given number in a dictionary"
+    '''find a value large than a given number in a dictionary'''
     def find_values(self, a_list, number):
         zipped = dict(df.zipped(a_list))
         for k, v in zipped.items():
@@ -129,13 +129,13 @@ class Dataset(object):
                 print(k, v)
         return
     
-    "find the minimum and maximum values and corresponding keys in a dictionary"
+    '''find the minimum and maximum values and corresponding keys in a dictionary'''
     def min_max(self, zipped):
         minim = min(zipped, key=lambda k: zipped[k])
         maxim = max(zipped, key=lambda k: zipped[k])
         print("Minimum:", minim, zipped[minim], "Maximum:", maxim, zipped[maxim])
                  
-    "create a SVM classifier, cross-validate and return best parameters and score"
+    '''create a SVM classifier, cross-validate and return best parameters and score'''
     def svm(self):
         params = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
         svc = svm.SVC()
