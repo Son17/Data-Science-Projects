@@ -176,8 +176,11 @@ for i in features_to_plot:
     df.plot_distribution(i)
 
 
-# The above variables have been chosen for their leptokurtic distributions, with kurtosis values above 3, which is the value for a univariate normal distribution. This means that the above distributions have fatter tails, or outliers. 
-# The histogram with rugplot has been chosen as it allows to plot a univariate distribution of observations and draw small vertical lines to show each observation in a distribution.
+# In[37]:
+
+'''The above variables have been chosen for their leptokurtic distributions, with kurtosis values above 3, which is the value for a univariate normal distribution. This means that the above distributions have fatter tails, or outliers. The histogram with rugplot has been chosen as it allows to plot a univariate distribution of observations and draw small vertical lines to show each observation in a distribution.
+'''
+
 
 # Question 2
 
@@ -213,12 +216,14 @@ df.min_max(zipped2)
 df.reg_plot(196, target, True)
 
 
-# Variable 196 was selected for visualisation as it exhibited the strongest relationship with the target variable based on correlation. The relationship is moderately positive with a correlation coefficient of +0.34.
-# 
-# The correlation coefficient was chosen to examine the relationship between the variables and the target variable as it represents the linear interdependence of two variables, describing the strength of the relationship and whether the relationship is negative or positive. A criticism is that the choice is overly simplistic as variables may have a non-linear relationship not captured by the metric. 
-# The regression plot was chosen as it permits to plot data and a linear regression model fit. Since the target is binary, we are dealing with a classification task and the plot was adjusted for this setting logistic to True (statsmodels estimates a logistic regression model).
-# 
-# The chart illustrates a mildly positive relationship between the variable and the target.
+# In[39]:
+
+'''Variable 196 was selected for visualisation as it exhibited the strongest relationship with the target variable based on correlation. The relationship is moderately positive with a correlation coefficient of +0.34.
+The correlation coefficient was chosen to examine the relationship between the variables and the target variable as it represents the linear interdependence of two variables, describing the strength of the relationship and whether the relationship is negative or positive. A criticism is that the choice is overly simplistic as variables may have a non-linear relationship not captured by the metric. 
+The regression plot was chosen as it permits to plot data and a linear regression model fit. Since the target is binary, we are dealing with a classification task and the plot was adjusted for this setting logistic to True (statsmodels estimates a logistic regression model).
+The chart illustrates a mildly positive relationship between the variable and the target.
+'''
+
 
 # Question 3b
 
@@ -247,12 +252,15 @@ df.min_max(zipped3)
 df.reg_plot(6, pc1, False)
 
 
-# Variable 6 was selected for visualisation as it exhibited the strongest relationship with the the first principal component based on correlation.
-# 
-# As in question 3a, the correlation coefficient was chosen to examine the relationship between the variables and the target variable as it represents the linear interdependence of two variables, describing the strength of the relationship and whether the relationship is negative or positive. A criticism is that the choice is overly simplistic as variables may have a non-linear relationship not captured by the metric. The regression plot was chosen as it permits to plot data and a linear regression model fit. 
-# 
-# The chart illustrates a fairly strong negative relationship between the variable and the first principal component.
-# 
+# In[40]:
+
+'''Variable 6 was selected for visualisation as it exhibited the strongest relationship with the the first principal component based on correlation.
+
+As in question 3a, the correlation coefficient was chosen to examine the relationship between the variables and the target variable as it represents the linear interdependence of two variables, describing the strength of the relationship and whether the relationship is negative or positive. A criticism is that the choice is overly simplistic as variables may have a non-linear relationship not captured by the metric. The regression plot was chosen as it permits to plot data and a linear regression model fit. 
+
+The chart illustrates a fairly strong negative relationship between the variable and the first principal component.
+'''
+
 
 # Question 4
 
@@ -261,13 +269,14 @@ df.reg_plot(6, pc1, False)
 df.svm()
 
 
-# A support vector machine classifier was chosen as it is effective when the number of features is greater than the number of samples, which is the case in this dataset. SVMs tend to work well with clear margin of separation and they are effective in high dimensional spaces.
-# SVMs do not perform well when a lot of 'noise' is present in the dataset.
-# 
-# Model performance was evaluated with cross-validation using the F1 score, as it is an appropriate evaluation metric for a classification task.
-# This metric can be interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal.  F1_micro calculates metrics globally by counting the total true positives, false negatives and false positives.
-# 
-# The model's best score is an F1 score of 0.72. Further performance improvements could be achieved by feature selection (e.g. through dropping variables with a very low correlation to the target) and by addressing collinearity between features. 
+# In[44]:
+
+'''A support vector machine classifier was chosen as it is effective when the number of features is greater than the number of samples, which is the case in this dataset. SVMs tend to work well with clear margin of separation and they are effective in high dimensional spaces.
+SVMs do not perform well when a lot of 'noise' is present in the dataset. Model performance was evaluated with cross-validation using the F1 score, as it is an appropriate evaluation metric for a classification task.
+This metric can be interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal.  F1_micro calculates metrics globally by counting the total true positives, false negatives and false positives.
+The model's best score is an F1 score of 0.72. Further performance improvements could be achieved by feature selection (e.g. through dropping variables with a very low correlation to the target) and by addressing collinearity between features. 
+'''
+
 
 # In[ ]:
 
